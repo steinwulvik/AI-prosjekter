@@ -15,6 +15,10 @@ python server.py
 
 Etter endringer i Python-filene må serveren startes på nytt. For kun HTML-endringer holder Ctrl+F5. Se Sammenligning-lesmeg.md for sammenligning og tilbakeføring.
 
+## Render
+
+Opprett tjenesten som en **Web Service** fra GitHub-repoet `steinwulvik/AI-prosjekter`. Appen ligger i undermappen `My-perfect-location`, så bruk dette som **Root Directory**. Velg branch `main`, runtime `Python`, build command `pip install -r requirements.txt` og start command `python server.py`. Sett health check path til `/api/health`. Render leverer `PORT` ved oppstart; serveren bruker den automatisk og lytter på `0.0.0.0` i Render-miljøet. Lokal oppstart beholder adressen `127.0.0.1:8003`.
+
 ## Datakilder
 
 - Kartverket: fortløpende adresseforslag. Nominatim: separat manuelt stedsoppslag i reserveflyten.

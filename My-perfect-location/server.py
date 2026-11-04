@@ -11,6 +11,7 @@ import time
 import socket
 import sys
 import hashlib
+import os
 from threading import RLock
 from concurrent.futures import ThreadPoolExecutor
 import xml.etree.ElementTree as ET
@@ -673,10 +674,13 @@ if __name__ == "__main__":
     if '--revision' in sys.argv:
         print(SERVER_REVISION)
         sys.exit(0)
+    render_runtime = bool(os.environ.get("PORT") or os.environ.get("RENDER"))
+    host = os.environ.get("HOST", "0.0.0.0" if render_runtime else "127.0.0.1")
+    port = int(os.environ.get("PORT", "8003"))
     try:
-        server = LocalHTTPServer(("127.0.0.1", 8003), Handler)
+        server = LocalHTTPServer((host, port), Handler)
     except OSError as exc:
-        if exc.errno == 98 or getattr(exc, "winerror", None) == 10048:
+        if host == "127.0.0.1" and port == 8003 and (exc.errno == 98 or getattr(exc, "winerror", None) == 10048):
             try:
                 with urlopen("http://127.0.0.1:8003/api/health", timeout=3) as response:
                     running = json.load(response)
@@ -691,8 +695,11 @@ if __name__ == "__main__":
             print("Port 8003 er i bruk. En server kan allerede kjøre på http://127.0.0.1:8003")
             sys.exit(1)
         raise
-    print("My Perfect Location kjører lokalt på http://127.0.0.1:8003")
-    print("Stopp serveren med Ctrl+C")
+    if host == "127.0.0.1":
+        print("My Perfect Location kjører lokalt på http://127.0.0.1:8003")
+        print("Stopp serveren med Ctrl+C")
+    else:
+        print(f"My Perfect Location lytter på {host}:{port}")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
