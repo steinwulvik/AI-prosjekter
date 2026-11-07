@@ -6,8 +6,8 @@
 const no = {
   meta: {
     locale: 'nb-NO',
-    appName: 'Bank Resilience Map',
-    pageTitle: 'Bank Resilience Map – konseptdemo',
+    appName: 'Bank Resilience Map 1.0',
+    pageTitle: 'Bank Resilience Map 1.0 – konseptdemo',
   },
   concept: {
     banner: 'Demonstrasjon med syntetiske data · Uavhengig konseptdemo',
@@ -256,7 +256,7 @@ const no = {
     openInMap: 'Vis i kartet',
   },
   scenario: {
-    title: 'Bank Resilience Map',
+    title: 'Bank Resilience Map 1.0',
     chooseTemplate: 'Hendelsestype',
     target: 'Komponent som feiler',
     targetProvider: 'Leverandør som feiler',
