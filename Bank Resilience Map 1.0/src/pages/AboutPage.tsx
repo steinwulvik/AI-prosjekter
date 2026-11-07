@@ -30,6 +30,16 @@ export default function AboutPage() {
         <h2>{m.about.sourcesTitle}</h2>
         <ul>
           <li>
+            <a href="https://www.finanstilsynet.no/publikasjoner-og-analyser/risiko--og-sarbarhetsanalyse/risiko--og-sarbarhetsanalyse-2026/risiko--og-sarbarhetsanalyse-2026/risiko--og-sarbarhetsanalyse-2026" rel="noopener noreferrer" target="_blank">
+              {m.about.source4}
+            </a>
+          </li>
+          <li>
+            <a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj" rel="noopener noreferrer" target="_blank">
+              {m.about.source3}
+            </a>
+          </li>
+          <li>
             <a href="https://www.bankingsupervision.europa.eu/framework/priorities/html/ssm.supervisory_priorities202511.en.html" rel="noopener noreferrer" target="_blank">
               {m.about.source1}
             </a>
