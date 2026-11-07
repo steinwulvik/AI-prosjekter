@@ -303,6 +303,7 @@ Avklart før byggestart (6. november 2026):
 
 ## 19. Endringslogg
 
+- **1.0, faglig rettelse (7. november 2026):** Etter gjennomgang mot primærkilder: kjernebanksystemet leveres og driftes av en kjernebankleverandør (Kjernedrift Nord) i stedet for i bankens eget datasenter, slik det er vanlig i norske banker. Innlogging går via en felles eID-løsning (Bankfelles eID), som Finanstilsynet beskriver som et tydelig enkeltpunkt for svikt. Oppgaven om rapportering bruker DORA-begrepet «alvorlig IKT-relatert hendelse». «Om demoen» viser til DORA og Finanstilsynets risiko- og sårbarhetsanalyse 2026 i tillegg til ECB. Resultatene i de to scenarioene er uendret.
 - **0.10 (6. november 2026):** Fjernet alle navn på virkelige selskaper fra spesifikasjonen. Overlappsanalysen i §17 er gjort generell.
 - **0.9 (6. november 2026):** Omfattende test (§14.2) med rettelser. Nye krav til inndata og bufring (§10). Kartet ligger i Påvirkning med båndoppsett i stedet for dagre (§2.1, §13). Språkvelger for norsk og engelsk vedtatt (P-16, D-13). Lagt til åpent spørsmål om hva som skal ligge i det offentlige repoet (§17).
 - **0.8 (6. november 2026):** Lagt til funn om overlapp med eksisterende tilbud under §17.
