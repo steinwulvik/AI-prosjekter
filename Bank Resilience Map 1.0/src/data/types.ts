@@ -41,7 +41,7 @@ export interface Service extends BaseNode {
   rpoMinutes: number;
 }
 
-export type Environment = 'onPrem' | 'cloud' | 'saas';
+export type Environment = 'onPrem' | 'cloud' | 'saas' | 'managed';
 
 export interface System extends BaseNode {
   kind: 'system';
