@@ -1,0 +1,9 @@
+node_modules
+dist
+*.log
+*.tsbuildinfo
+.DS_Store
+# Arbeidsfiler som ikke skal i det offentlige repoet
+Claude outputs/
+OLD/
+publisering/
