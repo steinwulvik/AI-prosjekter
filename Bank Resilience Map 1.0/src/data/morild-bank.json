@@ -286,16 +286,16 @@
         "en": "Core banking system"
       },
       "description": {
-        "no": "Konti, saldo og posteringer. Driftes i Morilds eget datasenter.",
-        "en": "Accounts, balances and postings. Runs in Morild's own data centre."
+        "no": "Konti, saldo og posteringer. Leveres og driftes av kjernebankleverandøren.",
+        "en": "Accounts, balances and postings. Delivered and operated by the core banking supplier."
       },
       "criticality": "critical",
       "owner": {
-        "no": "Plattformteam kjernebank",
-        "en": "Core banking platform team"
+        "no": "Forvaltning kjernebank",
+        "en": "Core banking management"
       },
       "status": "operational",
-      "environment": "onPrem",
+      "environment": "managed",
       "synthetic": true
     },
     {
@@ -736,6 +736,66 @@
         "en": "Push alerts in the mobile bank."
       },
       "synthetic": true
+    },
+    {
+      "id": "prv-kjerne",
+      "kind": "provider",
+      "name": {
+        "no": "Kjernedrift Nord",
+        "en": "Kjernedrift Nord"
+      },
+      "description": {
+        "no": "Leverer og drifter kjernebanksystemet for Morild Bank og flere andre banker.",
+        "en": "Delivers and operates the core banking system for Morild Bank and several other banks."
+      },
+      "criticality": "critical",
+      "owner": {
+        "no": "Leverandøransvarlig kjernebank",
+        "en": "Supplier manager, core banking"
+      },
+      "status": "operational",
+      "serviceType": {
+        "no": "Kjernebank som driftet tjeneste",
+        "en": "Core banking as a managed service"
+      },
+      "regions": [
+        "no"
+      ],
+      "alternatives": {
+        "no": "Ingen alternativ leverandør på kort sikt. Bytte av kjernebankleverandør er et flerårig prosjekt.",
+        "en": "No alternative supplier in the short term. Changing core banking supplier is a multi-year project."
+      },
+      "synthetic": true
+    },
+    {
+      "id": "prv-eid",
+      "kind": "provider",
+      "name": {
+        "no": "Bankfelles eID",
+        "en": "Bankfelles eID"
+      },
+      "description": {
+        "no": "Felles elektronisk identifisering som mange banker bruker til innlogging og signering.",
+        "en": "Shared electronic identification that many banks use for login and signing."
+      },
+      "criticality": "critical",
+      "owner": {
+        "no": "Leder identitet og tilgang",
+        "en": "Head of identity and access"
+      },
+      "status": "operational",
+      "serviceType": {
+        "no": "Elektronisk identifisering (eID)",
+        "en": "Electronic identification (eID)"
+      },
+      "regions": [
+        "no"
+      ],
+      "alternatives": {
+        "no": "Ingen fullgod reserveløsning. Kundesenteret kan hjelpe kunder, men digital innlogging stopper.",
+        "en": "No adequate fallback. The contact centre can help customers, but digital login stops."
+      },
+      "synthetic": true
     }
   ],
   "dependencies": [
@@ -1105,6 +1165,48 @@
       },
       "lastConfirmed": "2026-09-12",
       "validity": "confirmed",
+      "synthetic": true
+    },
+    {
+      "id": "sys-core__prv-kjerne",
+      "from": "sys-core",
+      "to": "prv-kjerne",
+      "type": "runsOn",
+      "strength": "hard",
+      "regions": [
+        "no"
+      ],
+      "source": {
+        "no": "Leverandørregister",
+        "en": "Supplier register"
+      },
+      "lastConfirmed": "2026-04-30",
+      "validity": "confirmed",
+      "note": {
+        "no": "Driftes i leverandørens to datasentre i Norge.",
+        "en": "Runs in the supplier's two data centres in Norway."
+      },
+      "synthetic": true
+    },
+    {
+      "id": "sys-iam__prv-eid",
+      "from": "sys-iam",
+      "to": "prv-eid",
+      "type": "uses",
+      "strength": "hard",
+      "regions": [
+        "no"
+      ],
+      "source": {
+        "no": "Leverandørregister",
+        "en": "Supplier register"
+      },
+      "lastConfirmed": "2026-04-30",
+      "validity": "confirmed",
+      "note": {
+        "no": "Kundene logger inn med felles eID. Bankens egen plattform håndterer sesjoner og tilganger.",
+        "en": "Customers log in with the shared eID. The bank's own platform handles sessions and access."
+      },
       "synthetic": true
     },
     {
@@ -1482,8 +1584,8 @@
           "en": "Systems that run in several countries move traffic automatically to the country that is working, but with reduced capacity."
         },
         {
-          "no": "Systemer i Morilds eget datasenter er ikke direkte berørt.",
-          "en": "Systems in Morild's own data centre are not directly affected."
+          "no": "Kjernebanksystemet og systemene i Morilds eget datasenter kjører ikke hos skyleverandøren og er ikke direkte berørt.",
+          "en": "The core banking system and the systems in Morild's own data centre do not run at the cloud provider and are not directly affected."
         }
       ],
       "controlQuestions": [
@@ -1593,8 +1695,8 @@
         {
           "id": "sky-t5",
           "title": {
-            "no": "Vurder om hendelsen skal rapporteres som vesentlig IKT-hendelse",
-            "en": "Assess whether the incident must be reported as a major ICT incident"
+            "no": "Vurder om hendelsen skal rapporteres som alvorlig IKT-relatert hendelse",
+            "en": "Assess whether the incident must be reported as a major ICT-related incident"
           },
           "role": {
             "no": "Operasjonell risiko",
