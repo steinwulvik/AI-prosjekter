@@ -1,6 +1,6 @@
-# Bank Resilience Map
+# Bank Resilience Map 1.0
 
-**Bank Resilience Map** er en konseptdemo som viser hvordan en bank kan forstå følgene av en IT- eller leverandørforstyrrelse. Den kobler kritiske tjenester til systemer og leverandører og synliggjør påvirkningsstier. Scenario, usikkerhet og oppfølging samles i ett hendelsesrom.
+**Bank Resilience Map 1.0** er en konseptdemo som viser hvordan en bank kan forstå følgene av en IT- eller leverandørforstyrrelse. Den kobler kritiske tjenester til systemer og leverandører og synliggjør påvirkningsstier. Scenario, usikkerhet og oppfølging samles i ett hendelsesrom.
 
 > Selvstendig porteføljeprosjekt. Ikke et kommersielt produkt, og ikke laget på oppdrag fra noen bank eller leverandør. Den fiktive banken **Morild Bank** og alle systemer, leverandører og hendelser er oppdiktet (syntetiske data).
 
@@ -36,9 +36,11 @@ Kravene står i [`SPEC.md`](SPEC.md). Den er kilden til sannhet for produkt og o
 
 ## Publisering
 
-Appen ligger i mappen `Bank Resilience Map` i repoet [steinwulvik/AI-prosjekter](https://github.com/steinwulvik/AI-prosjekter) og publiseres til **https://steinwulvik.github.io/AI-prosjekter/bank-resilience-map/**. Den er statisk og bruker hash-ruting og relative stier, så direkte lenker og oppfrisking virker fra en undermappe.
+Appen ligger i mappen `Bank Resilience Map 1.0` i repoet [steinwulvik/AI-prosjekter](https://github.com/steinwulvik/AI-prosjekter) og publiseres med Cloudflare Pages til **https://bank-resilience-map.pages.dev**. Cloudflare bygger appen automatisk ved hver endring i repoet, også når repoet er privat.
 
-Workflowen `.github/workflows/bank-resilience-map.yml` i roten av repoet bygger, tester og publiserer appen når noe i mappen endres. GitHub Pages slås på under **Settings → Pages → Source: GitHub Actions**.
+Oppsett i Cloudflare Pages: prosjekt `bank-resilience-map`, rotmappe `Bank Resilience Map 1.0`, byggkommando `npm run build`, utdatamappe `dist` og miljøvariabelen `NODE_VERSION=22`. Appen er statisk og bruker hash-ruting og relative stier, så direkte lenker og oppfrisking virker.
+
+Versjon 1.0 er låst. Versjon 2.0 utvikles i en egen mappe.
 
 ## Personvern
 
