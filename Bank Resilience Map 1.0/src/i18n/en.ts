@@ -130,6 +130,7 @@ const en: Messages = {
     onPrem: 'Own data centre',
     cloud: 'Cloud',
     saas: 'SaaS',
+    managed: 'Operated by supplier',
   },
   depType: {
     uses: 'uses',
@@ -402,7 +403,7 @@ const en: Messages = {
       'An independent, interactive concept demo that shows how a tool could link critical banking services to systems and suppliers, simulate an operational disruption and bring the follow-up together in one place.',
     whyTitle: 'Why?',
     why:
-      'European supervisors point to third-party and cloud risk, incident management and weaknesses in risk data as priority areas. The concept tests whether an explainable dependency map can make this work clearer.',
+      'DORA, the EU regulation on digital operational resilience, has applied in Norway since 1 July 2025. In its 2026 risk and vulnerability analysis, the Norwegian FSA lists supplier and value chain risk among the most critical vulnerabilities, and describes the shared electronic identification solution as a clear single point of failure. European supervisors also prioritise third-party and cloud risk and incident management. The concept tests whether an explainable dependency map can make this work clearer.',
     privacyTitle: 'Privacy',
     privacy:
       'The demo has no login, tracking cookies or analytics. Your choices are only stored in this browser tab and disappear when you close it or press «Reset demo».',
@@ -416,6 +417,8 @@ const en: Messages = {
     sourcesTitle: 'Background',
     source1: 'ECB – Supervisory priorities 2026–28',
     source2: 'ECB – Supervisory priorities 2025–27',
+    source3: 'EU – DORA, Regulation (EU) 2022/2554',
+    source4: 'Norwegian FSA – risk and vulnerability analysis 2026 (Norwegian)',
     techTitle: 'Technology',
     tech: 'Static web app built with React, TypeScript and React Flow. All calculations run in the browser.',
   },
