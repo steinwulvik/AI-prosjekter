@@ -129,6 +129,7 @@ const no = {
     onPrem: 'Eget datasenter',
     cloud: 'Sky',
     saas: 'SaaS',
+    managed: 'Driftes av leverandør',
   },
   depType: {
     uses: 'bruker',
@@ -401,7 +402,7 @@ const no = {
       'En uavhengig, interaktiv konseptdemo som viser hvordan et verktøy kan koble kritiske banktjenester til systemer og leverandører, simulere en driftsforstyrrelse og samle oppfølgingen på ett sted.',
     whyTitle: 'Hvorfor?',
     why:
-      'Europeiske tilsynsmyndigheter peker på tredjeparts- og skyrisiko, hendelseshåndtering og svakheter i risikodata som prioriterte områder. Konseptet tester om et forklarbart avhengighetskart kan gjøre dette arbeidet mer oversiktlig.',
+      'DORA, EUs forordning om digital operasjonell motstandsdyktighet, har gjeldt i Norge siden 1. juli 2025. I risiko- og sårbarhetsanalysen for 2026 trekker Finanstilsynet fram leverandør- og verdikjederisiko blant de mest kritiske sårbarhetene, og beskriver den felles løsningen for elektronisk identifisering som et tydelig enkeltpunkt for svikt. Europeiske tilsynsmyndigheter prioriterer også tredjeparts- og skyrisiko og hendelseshåndtering. Konseptet tester om et forklarbart avhengighetskart kan gjøre dette arbeidet mer oversiktlig.',
     privacyTitle: 'Personvern',
     privacy:
       'Demoen har ingen innlogging, informasjonskapsler for sporing eller analyseverktøy. Valgene dine lagres bare i denne nettleserfanen og forsvinner når du lukker den eller trykker «Nullstill demo».',
@@ -415,6 +416,8 @@ const no = {
     sourcesTitle: 'Bakgrunn',
     source1: 'ECB – Supervisory priorities 2026–28',
     source2: 'ECB – Supervisory priorities 2025–27',
+    source3: 'EU – DORA, forordning (EU) 2022/2554',
+    source4: 'Finanstilsynet – risiko- og sårbarhetsanalyse 2026',
     techTitle: 'Teknologi',
     tech: 'Statisk webapp med React, TypeScript og React Flow. All beregning skjer i nettleseren.',
   },
