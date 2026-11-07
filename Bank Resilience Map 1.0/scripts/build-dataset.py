@@ -37,7 +37,7 @@ svc("svc-aml","Transaksjonsovervåking (AML)","Overvåking av transaksjoner for 
 
 # Systemer
 def sys_(id,name,desc,crit,owner,env,**kw): node(id,"system",name,desc,crit,owner,environment=env,**kw)
-sys_("sys-core","Kjernebanksystem","Konti, saldo og posteringer. Driftes i Morilds eget datasenter.","critical","Plattformteam kjernebank","onPrem")
+sys_("sys-core","Kjernebanksystem","Konti, saldo og posteringer. Leveres og driftes av kjernebankleverandøren.","critical","Forvaltning kjernebank","managed")
 sys_("sys-pay","Betalingsmotor","Behandler og sender betalinger til avregning.","critical","Betalingsteamet","onPrem")
 sys_("sys-card","Kortplattform","Kobler bankens kort mot kortprosessøren.","critical","Kortteamet","saas")
 sys_("sys-api","Integrasjonsplattform (API)","Felles API-lag mellom kanaler og bakenforliggende systemer.","critical","Integrasjonsteamet","cloud",
@@ -68,6 +68,10 @@ prv("prv-kredittdata","Kredittdata Norden","Leverer kredittopplysninger.","high"
 prv("prv-smslinje","SMS-Linje","SMS-gateway for utsending av varsler.","medium","Tjenesteeier kundekommunikasjon","SMS-gateway",["se","dk"],
     "Push-varsler i mobilbanken.")
 
+prv("prv-kjerne","Kjernedrift Nord","Leverer og drifter kjernebanksystemet for Morild Bank og flere andre banker.","critical","Leverandøransvarlig kjernebank","Kjernebank som driftet tjeneste",["no"],
+    "Ingen alternativ leverandør på kort sikt. Bytte av kjernebankleverandør er et flerårig prosjekt.")
+prv("prv-eid","Bankfelles eID","Felles elektronisk identifisering som mange banker bruker til innlogging og signering.","critical","Leder identitet og tilgang","Elektronisk identifisering (eID)",["no"],
+    "Ingen fullgod reserveløsning. Kundesenteret kan hjelpe kunder, men digital innlogging stopper.")
 deps = []
 def dep(f, t, type="uses", strength="hard", source="Tjenestekatalog", confirmed="2026-08-20", validity="confirmed", regions=None, note=None):
     d = {"id": f"{f}__{t}", "from": f, "to": t, "type": type, "strength": strength}
@@ -107,6 +111,8 @@ dep("svc-notify","sys-notify",confirmed="2025-05-20")
 dep("svc-aml","sys-aml",confirmed="2026-07-01")
 # Systemer
 dep("sys-pay","sys-core",source=CMDB,confirmed="2026-09-12")
+dep("sys-core","prv-kjerne",type="runsOn",source=LR,confirmed="2026-04-30",regions=["no"],note="Driftes i leverandørens to datasentre i Norge.")
+dep("sys-iam","prv-eid",source=LR,confirmed="2026-04-30",regions=["no"],note="Kundene logger inn med felles eID. Bankens egen plattform håndterer sesjoner og tilganger.")
 dep("sys-pay","prv-clearing",source=LR,confirmed="2026-04-30",regions=["no"])
 dep("sys-card","prv-kortnord",source=LR,confirmed="2026-04-30",regions=["no","dk"],note="Aktiv-aktiv i Norge og Danmark.")
 dep("sys-card","sys-core",strength="soft",source=CMDB,confirmed="2026-09-12",note="Kortautorisasjon kan kjøre med reservegrenser (stand-in) uten kjernebanken.")
@@ -139,7 +145,7 @@ scenarios = [
   "durationOptions":[60,240,720,1440],"startTime":"2026-11-03T07:42:00",
   "assumptions":L(["Leverandørens statusside er eneste kilde til omfanget den første halvtimen.",
      "Systemer som kjører i flere land, flytter trafikken automatisk til landet som virker, men med redusert kapasitet.",
-     "Systemer i Morilds eget datasenter er ikke direkte berørt."]),
+     "Kjernebanksystemet og systemene i Morilds eget datasenter kjører ikke hos skyleverandøren og er ikke direkte berørt."]),
   "controlQuestions":L(["Har leverandøren bekreftet omfang og forventet gjenopprettingstid?",
      "Finnes det reserveløsninger eller alternative leverandører for de berørte tjenestene?",
      "Må kunder informeres i kanalene som fortsatt virker?",
@@ -155,7 +161,7 @@ scenarios = [
      ("Vurder om berørte systemer kan flyttes eller kjøres på en reserveløsning","Teknisk hendelsesleder",60),
      ("Publiser driftsmelding i kanalene som virker","Kommunikasjonsansvarlig",45),
      ("Informer kundesenteret om berørte tjenester","Beredskapsleder",45),
-     ("Vurder om hendelsen skal rapporteres som vesentlig IKT-hendelse","Operasjonell risiko",120)],1)],
+     ("Vurder om hendelsen skal rapporteres som alvorlig IKT-relatert hendelse","Operasjonell risiko",120)],1)],
   "decisions":[dict({"offsetMinutes":o,"text":T(t),"role":T(r)}, **({"taskId":k} if k else {})) for o,t,r,k in [
      (20,"Hendelsen klassifiseres foreløpig som alvorlig. Hendelsesrom etableres.","Beredskapsleder",None),
      (40,"Ingen manuell flytting før leverandøren har bekreftet omfanget.","Teknisk hendelsesleder","sky-t2")]],
