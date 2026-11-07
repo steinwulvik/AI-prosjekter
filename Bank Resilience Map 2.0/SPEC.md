@@ -14,9 +14,9 @@ Demonstratoren bruker oppdiktede banker, systemer, leverandører og hendelser. D
 | Versjon | Status | Innhold |
 |---|---|---|
 | 1.0 | Publisert 6. november 2026, låst. Ligger på https://bank-resilience-map.pages.dev (Cloudflare Pages) og heter «Bank Resilience Map 1.0» i appen | Hendelsesflyten: Scenario → Påvirkning → Hendelsesrom → Rapport, Tjenesteoversikt, Om demoen, norsk og engelsk |
-| 2.0 «fra hendelse til forebygging» | Under planlegging | Alt i 1.0, pluss Leverandører, Endringer og Øvelser og funn (§2.3, §8.2, §14.3) |
+| 2.0 «fra hendelse til forebygging» | Publisert 7. november 2026. Ligger på https://bank-resilience-map-2.pages.dev (Cloudflare Pages, prosjekt `bank-resilience-map-2`, mappen «Bank Resilience Map 2.0») og heter «Bank Resilience Map 2.0» i appen | Alt i 1.0, pluss Leverandører, Endringer og Øvelser og funn (§2.3, §8.2, §14.3) |
 
-Versjon 1.0 ligger på nett og endres ikke mens 2.0 utvikles. 2.0 bygges videre på 1.0 i prosjektmappen og publiseres til samme lenke når den er ferdig og godkjent av forfatteren. Kravene for 1.0 nedenfor gjelder fortsatt i 2.0 med mindre en 2.0-del sier noe annet.
+Versjon 1.0 og 2.0 ligger på nett hver for seg, med hver sin mappe i repoet og hvert sitt Cloudflare-prosjekt. 1.0 endres ikke. Kravene for 1.0 nedenfor gjelder fortsatt i 2.0 med mindre en 2.0-del sier noe annet.
 
 ## 2. Målbilde for sluttproduktet
 
@@ -403,6 +403,7 @@ Avklart før byggestart (6. november 2026):
 ## 19. Endringslogg
 
 - **2.0-utkast, rettelse (7. november 2026):** Versjon 1.0 flyttet til Cloudflare Pages og har fått «1.0» i appnavnet. Versjonsmerking besluttet (§17).
+- **2.0 publisert (7. november 2026):** Lagt i mappen «Bank Resilience Map 2.0» i repoet og publisert med Cloudflare Pages til https://bank-resilience-map-2.pages.dev (prosjekt `bank-resilience-map-2`, bygg `npm run build`, utdata `dist`, NODE_VERSION=22). Alle filene på GitHub er kontrollert mot den testede versjonen. 1.0 er uendret.
 - **2.0, fase 2.0-7 testrunde (7. november 2026):** Full testrunde gjennomført (§14.4). To rettelser: tastaturtilgang til tabellene i rapporten på mobil og faktaboksen på «Endringer» i én kolonne på mobil. Klar til publisering når forfatteren sier fra.
 - **2.0-utkast, fase 2.0-6 (7. november 2026):** Appen heter «Bank Resilience Map 2.0» (tittel, sidetittel og fanetittel). Toppmenyen har menyknapp på smale skjermer (§17). Introsiden har kortet «Forebygging» med lenker til Leverandører, Endringer og Øvelser og funn. Veiledningen nevner valget mellom hendelse og øvelse, og siste steg peker til de nye sidene.
 - **2.0-utkast, fase 2.0-5 (7. november 2026):** Øvelser og funn er bygget. Scenarioskjemaet har valget «Kjøres som: Hendelse / Øvelse» (forhåndsvalgt «Øvelse» fra knappen «Start en øvelse»). En øvelse merkes «Øvelse» i hendelsesrommet, med lenke for å registrere funn, og rapporten heter «Øvelsesrapport» med «Kjørt som: Øvelse». Hver øvelse som startes, legges til i øvelseslisten. Siden «Øvelser og funn» viser nøkkeltall (gjennomførte øvelser, åpne funn, funn under arbeid, lukkede funn), øvelsene med scenario, dato, deltakere (roller), leverandører som deltok og antall funn, alle funn med kilde, ansvarlig, frist og status (filter «Ikke lukket» / «Alle», status endres i listen) og et skjema for å registrere funn med ansvarlig og frist. Statusendringer gjelder også funnene som vises på «Endringer». Alt lagres i fanen og nullstilles med «Nullstill demo». To nye tester for lagringen (17 av 17 består).
