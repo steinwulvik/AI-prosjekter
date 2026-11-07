@@ -7,8 +7,8 @@ import type { Messages } from './no';
 const en: Messages = {
   meta: {
     locale: 'en-GB',
-    appName: 'Bank Resilience Map',
-    pageTitle: 'Bank Resilience Map – concept demo',
+    appName: 'Bank Resilience Map 1.0',
+    pageTitle: 'Bank Resilience Map 1.0 – concept demo',
   },
   concept: {
     banner: 'Demonstration with synthetic data · Independent concept demo',
@@ -257,7 +257,7 @@ const en: Messages = {
     openInMap: 'Show in map',
   },
   scenario: {
-    title: 'Bank Resilience Map',
+    title: 'Bank Resilience Map 1.0',
     chooseTemplate: 'Incident type',
     target: 'Failing component',
     targetProvider: 'Failing supplier',
